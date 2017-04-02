@@ -13,8 +13,7 @@
 ------------------------------------------------------------------- */
 
 xreverse([],[]).
-xreverse([Item|End1], List) :- xreverse(End1, End2),
-                      removeLast(List, End2, Item).
+xreverse([Item|End1], List) :- xreverse(End1, End2), removeLast(List, End2, Item).
 
 /* -------------------------------------------------------------------
  Question 2
@@ -32,12 +31,12 @@ xunique(A, B) :- xuniqueHelper(A, B, []).
 xuniqueHelper([], [], _).
 % This is the first time we have seen Item.
 xuniqueHelper([Item|End1], [Item|End2], List) :-
-                           xuniqueHelper(End1, End2, [Item|List]),
-                           notInList(Item, End2).
+	xuniqueHelper(End1, End2, [Item|List]),
+	notInList(Item, End2).
 % Item has already been seen before, it should be in List3.
 xuniqueHelper([Item|End1], List2, List3) :-
-                           inList(Item, List3),
-                           xuniqueHelper(End1, List2, List3).
+	inList(Item, List3),
+	xuniqueHelper(End1, List2, List3).
 
 /* -------------------------------------------------------------------
  inList(+A, +L)
@@ -64,8 +63,7 @@ notInList(Item1, [Item2|L]) :- Item1 \= Item2, notInList(Item1, L).
  elements that are contained in L1 but not L2.
 ------------------------------------------------------------------- */
 
-xdiff(List1, List2, List3) :- subtract(List1, List2, Sub),
-             xunique(Sub, List3).
+xdiff(List1, List2, List3) :- subtract(List1, List2, Sub), xunique(Sub, List3).
 
 /* -------------------------------------------------------------------
  Question 4
@@ -77,8 +75,7 @@ xdiff(List1, List2, List3) :- subtract(List1, List2, Sub),
 ------------------------------------------------------------------- */
 
 removeLast([Item], [], Item).
-removeLast([Item|End1], [Item|End2], Item2) :-
-                        removeLast(End1, End2, Item2).
+removeLast([Item|End1], [Item|End2], Item2) :- removeLast(End1, End2, Item2).
 
 /* -------------------------------------------------------------------
  Question 5.1
@@ -121,8 +118,11 @@ connect(A, [B|L]) :- edge(B,A), connect(A, L).
 maxclique(N, L) :- findall(X, maxcliquecond1(N, X) , L).
 
 % cond1 ensures that the lists that are found are maximal cliques
-maxcliquecond1(N1, L1) :- length(L1, N1), clique(L1),
-                   N2 is N1 + 1, findall(X, maxcliquecond2(N2, L1, X), []).
+maxcliquecond1(N1, L1) :-
+	length(L1, N1),
+	clique(L1),
+	N2 is N1 + 1,
+	findall(X, maxcliquecond2(N2, L1, X), []).
 
 % cond2 ensures that there are no larger cliques that contain clique L1
 maxcliquecond2(N, L1, L2) :- length(L2, N), clique(L2), xsubset(L1, L2).

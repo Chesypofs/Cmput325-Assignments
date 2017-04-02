@@ -1,3 +1,25 @@
+#|
+Name: William Hodgson
+ID: 1413104
+Course: CMPUT 325
+Section: B1
+Assignment: #1
+|#
+
+#|
+fl-interp is an interpreter for the fun programing language,
+that takes an expression E and evaluates it on program P.
+
+E can include built in functions:
+	null, atom, eq, first, rest, cons, equal, isnumber,
+	+, -, *, =, <, >, not, and, or, if
+or user-defined functions that are included in P.
+The user-defined function definitions must be of the form:
+	f(X1,X2,...,Xn)=Exp
+where f is the function name, the Xis are parameters and
+Exp is the function body.
+|#
+
 (defun fl-interp (E P)
 	(cond
 		((atom E) E)
@@ -154,8 +176,6 @@
 	)
 )
 
-; DOES NOT WORK
-; ERROR HERE
 (defun reduceargs (arg P)
 	(cond
 		((eq arg NIL) NIL)

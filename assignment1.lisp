@@ -14,9 +14,9 @@ Y may be NIL or lists containing NIL.
 |#
 
 (defun xmember (X Y)
-    (cond ((null X) nil)
-          ((equal (car X) Y) T)
-          (T (xmember (cdr X) Y ))
+	(cond ((null X) nil)
+		((equal (car X) Y) T)
+		(T (xmember (cdr X) Y ))
     )
 )
 
@@ -33,8 +33,8 @@ Test Cases:
 
 (defun flatten (x)
     (cond ((null x) ())
-          ((atom (car x)) (cons (car x) (flatten (cdr x))))
-          (T (flatten (append (car x) (cdr x))))
+		((atom (car x)) (cons (car x) (flatten (cdr x))))
+		(T (flatten (append (car x) (cdr x))))
     )
 )
 
@@ -52,8 +52,8 @@ Test Cases:
 
 (defun mix (L2 L1)
     (cond ((null L2) L1)
-          ((null L1) L2)
-          ((cons (car L1) (cons (car L2) (mix (cdr L2) (cdr L1)))))
+		((null L1) L2)
+		((cons (car L1) (cons (car L2) (mix (cdr L2) (cdr L1)))))
     )
 )
 
@@ -79,8 +79,8 @@ all elements of L that are at odd indices (starting from 1).
 
 (defun getodd (L)
     (cond ((null L) ())
-          ((null (cdr L)) L)
-          (T (cons (car L) (getodd (cddr L))))
+		((null (cdr L)) L)
+		(T (cons (car L) (getodd (cddr L))))
     )
 )
 
@@ -91,8 +91,8 @@ all elements of L that are at even indices (starting from 1).
 
 (defun geteven (L)
     (cond ((null L) ())
-          ((null (cdr L)) ())
-          (T (cons (cadr L) (geteven (cddr L))))
+		((null (cdr L)) ())
+		(T (cons (cadr L) (geteven (cddr L))))
     )
 )
 
@@ -146,19 +146,19 @@ Test Cases:
 
 (defun subsetsum (S L)
     (cond ((< S 0) ())                       ; First exclude all the simple cases                      
-          ((null L) ())
-          ((= S (car L)) (cons (car L) ()))
-          ((= S (sum L)) L)
-          ((> S (sum L)) ())
-                    
-          (T (let ((valueinsum (subsetsum (- S (car L)) (cdr L)))   ; Case 1: the first atom of L is in the sum
-                   (valuenotinsum (subsetsum S (cdr L)))            ; Case 2: the first atom of L is not in the sum
-                  )                                  
-                 (cond (valueinsum (cons (car L) valueinsum))       ; Check if either of the two cases was correct
-                       (valuenotinsum valuenotinsum)
-                 )
-             )
-          )          
+		((null L) ())
+		((= S (car L)) (cons (car L) ()))
+		((= S (sum L)) L)
+		((> S (sum L)) ())
+				
+		(T (let ((valueinsum (subsetsum (- S (car L)) (cdr L)))   ; Case 1: the first atom of L is in the sum
+				(valuenotinsum (subsetsum S (cdr L)))            ; Case 2: the first atom of L is not in the sum
+				)                                  
+			(cond (valueinsum (cons (car L) valueinsum))       ; Check if either of the two cases was correct
+				   (valuenotinsum valuenotinsum)
+			)
+			)
+		)          
     )
 )
 
@@ -170,6 +170,6 @@ returns 0.
 
 (defun sum (L)
     (cond ((null L) 0)
-          (T (+ (car L) (sum (cdr L))))
+		(T (+ (car L) (sum (cdr L))))
     )
 )
