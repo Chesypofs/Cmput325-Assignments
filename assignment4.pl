@@ -50,17 +50,17 @@ fourSquares(N, [S1, S2, S3, S4]) :-
  less than or equal to the next months dismantlements.
  
  Examples:
-	Adivisions: [1,3,3,4,6,10,12]
-	Bdivisions: [3,4,7,9,16]
+	Adivisions: 1,1
+	Bdivisions: 1,1
+	Solution: false
+	
+	Adivisions: 1,3,3,4,6,10,12
+	Bdivisions: 3,4,7,9,16
 	Solution: [[[1,3],[4]],[[3,4],[7]],[[12],[3,9]],[[6,10],[16]]]
 	
-	Adivisions: [1,2,3,3,8,5,5]
-	Bdivisions: [3,6,4,4,10]
+	Adivisions: 1,2,3,3,8,5,5
+	Bdivisions: 3,6,4,4,10
 	Solution: [[[1, 2], [3]], [[3, 3], [6]], [[8], [4, 4]], [[5, 5], [10]]]
-
-	Adivisions: []
-	Bdivisions: []
-	Solution: []
 --------------------------------------------------------- */
 
 disarm([],[],[]).
